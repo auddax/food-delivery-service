@@ -13,4 +13,4 @@ export const Restaurant = ({ restaurant = {} }) => {
       <ReviewsList reviews={reviews} />
     </section>
   );
-}
+};

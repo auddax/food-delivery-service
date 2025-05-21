@@ -7,7 +7,12 @@ export const Menu = ({ menu }) => (
     <h3>Meню</h3>
     <ul>
       {menu?.map(({ id, name, price, ingredients }) => (
-        <MenuItem key={id} name={name} price={price} ingredients={ingredients} />
+        <MenuItem
+          key={id}
+          name={name}
+          price={price}
+          ingredients={ingredients}
+        />
       ))}
     </ul>
   </div>

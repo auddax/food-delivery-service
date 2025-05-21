@@ -18,4 +18,4 @@ export const App = () => {
       <Restaurant restaurant={restaurantsById[restaurantId]} />
     </Layout>
   );
-}
+};

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 export const useCounter = (initialValue = 0, minValue = 0, maxValue = 5) => {
   const [count, setCount] = useState(initialValue);
@@ -11,4 +11,4 @@ export const useCounter = (initialValue = 0, minValue = 0, maxValue = 5) => {
   };
 
   return [count, incrementCount, decrementCount];
-}
+};
