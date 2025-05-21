@@ -4,8 +4,8 @@ import styles from './NavigationBar.module.scss'
 
 export const NavigationBar = ({ items, onButtonClick }) => (
   <section className={styles['nav-bar']}>
-    {items?.map(({ id, name }, idx) => (
-      <NavigationButton key={id} title={name} handleClick={() => onButtonClick(idx)} />
+    {items?.map(({ id, name }) => (
+      <NavigationButton key={id} title={name} handleClick={() => onButtonClick(id)} />
     ))}
   </section>
 )
