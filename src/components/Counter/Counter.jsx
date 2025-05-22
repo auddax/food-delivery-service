@@ -1,10 +1,8 @@
-import { MENU_ITEMS_COUNTER } from 'src/constants';
 import { useCounter } from 'src/hooks/useCounter';
 
 import styles from './Counter.module.scss';
 
-export const Counter = () => {
-  const { initialValue, minValue, maxValue } = MENU_ITEMS_COUNTER;
+export const Counter = ({ initialValue, minValue, maxValue }) => {
   const [count, increment, decrement] = useCounter(
     initialValue,
     minValue,
