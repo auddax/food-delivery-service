@@ -3,11 +3,7 @@ import { MENU_ITEMS_COUNTER } from 'src/constants';
 
 import styles from './MenuItem.module.scss';
 
-const MenuItemCounter = () => {
-  const { initialValue, minValue, maxValue } = MENU_ITEMS_COUNTER;
-  
-  return <Counter initialValue={initialValue} minValue={minValue} maxValue={maxValue} />
-}
+const MenuItemCounter = () => <Counter {...MENU_ITEMS_COUNTER} />;
 
 export const MenuItem = ({ name, price, ingredients }) => (
   <li className={styles['menu-item']}>

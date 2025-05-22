@@ -1,6 +1,6 @@
-import styles from './Review.module.scss';
+import styles from './ReviewItem.module.scss';
 
-export const Review = ({ user, text, rating }) => (
+export const ReviewItem = ({ user, text, rating }) => (
   <li className={styles['review']}>
     <h4>{user}</h4>
     <div>
