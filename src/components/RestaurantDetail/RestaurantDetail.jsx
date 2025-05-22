@@ -1,9 +1,9 @@
 import { Menu } from 'src/components/Menu/Menu';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
 
-import styles from './Restaurant.module.scss';
+import styles from './RestaurantDetail.module.scss';
 
-export const Restaurant = ({ restaurant = {} }) => {
+export const RestaurantDetail = ({ restaurant = {} }) => {
   const { name, menu, reviews } = restaurant;
 
   return (
