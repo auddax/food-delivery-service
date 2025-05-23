@@ -1,10 +1,11 @@
 import { ReviewItem } from 'src/components/ReviewItem/ReviewItem';
+import { Title } from 'src/components/Title/Title';
 
 import styles from './ReviewsList.module.scss';
 
 export const ReviewsList = ({ reviews }) => (
   <div className={styles['reviews-list']}>
-    <h3>Отзывы</h3>
+    <Title level={3} value='Отзывы' />
     <ul>
       {reviews?.map(({ id, ...restProps }) => (
         <ReviewItem key={id} {...restProps} />

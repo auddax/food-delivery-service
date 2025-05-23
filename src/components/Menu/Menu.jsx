@@ -1,10 +1,11 @@
 import { MenuItem } from 'src/components/MenuItem/MenuItem';
+import { Title } from 'src/components/Title/Title';
 
 import styles from './Menu.module.scss';
 
 export const Menu = ({ menu }) => (
   <div className={styles['menu']}>
-    <h3>Meню</h3>
+    <Title level={3} value='Меню' />
     <ul>
       {menu?.map(({ id, ...restProps }) => (
         <MenuItem key={id} {...restProps} />

@@ -1,5 +1,6 @@
 import { Menu } from 'src/components/Menu/Menu';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
+import { Title } from 'src/components/Title/Title';
 
 import styles from './RestaurantDetail.module.scss';
 
@@ -9,7 +10,7 @@ export const RestaurantDetail = ({ restaurant }) => {
 
   return (
     <section className={styles['restaurant']}>
-      <h2 className={styles['name']}>{name}</h2>
+      <Title level={2} className={styles['name']} value={name} />
       <Menu menu={menu} />
       <ReviewsList reviews={reviews} />
     </section>
