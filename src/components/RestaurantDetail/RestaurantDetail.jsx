@@ -3,7 +3,8 @@ import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
 
 import styles from './RestaurantDetail.module.scss';
 
-export const RestaurantDetail = ({ restaurant = {} }) => {
+export const RestaurantDetail = ({ restaurant }) => {
+  if (!restaurant) return null;
   const { name, menu, reviews } = restaurant;
 
   return (
