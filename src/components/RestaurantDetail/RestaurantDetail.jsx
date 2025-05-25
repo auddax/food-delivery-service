@@ -1,4 +1,5 @@
 import { Menu } from 'src/components/Menu/Menu';
+import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
 import { Title } from 'src/components/Title/Title';
 
@@ -13,6 +14,7 @@ export const RestaurantDetail = ({ restaurant }) => {
       <Title level={2} className={styles['name']} value={name} />
       <Menu menu={menu} />
       <ReviewsList reviews={reviews} />
+      <ReviewForm />
     </section>
   );
 };

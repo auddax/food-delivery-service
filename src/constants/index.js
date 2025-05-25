@@ -3,3 +3,9 @@ export const MENU_ITEMS_COUNTER = {
   minValue: 0,
   maxValue: 5,
 };
+
+export const RATING_COUNTER = {
+  initialValue: 1,
+  minValue: 1,
+  maxValue: 5,
+};
