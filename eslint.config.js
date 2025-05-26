@@ -35,7 +35,7 @@ export default [
         "warn",
         { allowConstantExport: true },
       ],
-      "react/prop-types": "off",
+      "react/prop-types": 0,
       "simple-import-sort/imports": "error",
       "simple-import-sort/exports": "error",
     },

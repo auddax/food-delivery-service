@@ -1,16 +1,22 @@
 import { Menu } from 'src/components/Menu/Menu';
+import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
+import { Title } from 'src/components/Title/Title';
 
 import styles from './RestaurantDetail.module.scss';
 
-export const RestaurantDetail = ({ restaurant = {} }) => {
+export const RestaurantDetail = ({ restaurant }) => {
+  if (!restaurant) {
+    return null;
+  }
   const { name, menu, reviews } = restaurant;
 
   return (
     <section className={styles['restaurant']}>
-      <h2 className={styles['name']}>{name}</h2>
+      <Title level={2} className={styles['name']} value={name} />
       <Menu menu={menu} />
       <ReviewsList reviews={reviews} />
+      <ReviewForm />
     </section>
   );
 };
