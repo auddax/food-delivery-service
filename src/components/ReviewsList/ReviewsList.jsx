@@ -4,7 +4,9 @@ import { Title } from 'src/components/Title/Title';
 import styles from './ReviewsList.module.scss';
 
 export const ReviewsList = ({ reviews }) => {
-  if (!reviews?.length) return null;
+  if (!reviews?.length) {
+    return null;
+  }
 
   return (
     <div className={styles['reviews-list']}>

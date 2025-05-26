@@ -6,7 +6,9 @@ import { Title } from 'src/components/Title/Title';
 import styles from './RestaurantDetail.module.scss';
 
 export const RestaurantDetail = ({ restaurant }) => {
-  if (!restaurant) return null;
+  if (!restaurant) {
+    return null;
+  }
   const { name, menu, reviews } = restaurant;
 
   return (
