@@ -28,6 +28,7 @@ export const ReviewForm = () => {
             name='name'
             value={form.name}
             onChange={onNameChange}
+            className={styles['form-input']}
           />
         </FormItem>
         <FormItem label='Текст:'>
@@ -36,6 +37,7 @@ export const ReviewForm = () => {
             name='review'
             value={form.review}
             onChange={onReviewChange}
+            className={styles['form-input']}
           />
         </FormItem>
         <FormItem label='Рейтинг:'>
@@ -48,10 +50,12 @@ export const ReviewForm = () => {
           />
         </FormItem>
         <div className={styles['form-actions']}>
-          <button type='button' onClick={clear}>
+          <button type='button' onClick={clear} className={styles['form-btn']}>
             Очистить форму
           </button>
-          <button type='submit'>Отправить</button>
+          <button type='submit' className={styles['form-btn']}>
+            Отправить
+          </button>
         </div>
       </form>
     </div>

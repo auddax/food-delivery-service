@@ -1,7 +1,7 @@
 import styles from './Counter.module.scss';
 
 export const Counter = ({ count, increment, decrement }) => (
-  <span>
+  <span className={styles['counter']}>
     <button className={styles['counter-btn']} onClick={decrement}>
       -
     </button>
