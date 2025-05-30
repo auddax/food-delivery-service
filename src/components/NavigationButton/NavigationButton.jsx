@@ -5,7 +5,7 @@ export const NavigationButton = ({ title, handleClick }) => {
     return null;
   }
   return (
-    <button className={styles['nav-btn']} onClick={handleClick}>
+    <button className={styles.navBtn} onClick={handleClick}>
       {title}
     </button>
   );

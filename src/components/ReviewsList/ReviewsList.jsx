@@ -9,7 +9,7 @@ export const ReviewsList = ({ reviews }) => {
   }
 
   return (
-    <div className={styles['reviews-list']}>
+    <div className={styles.reviewsList}>
       <Title level={3} value='Отзывы' />
       <ul>
         {reviews.map(({ id, ...restProps }) => (

@@ -7,8 +7,8 @@ export const ScrollProgressBar = () => {
 
   return (
     <div
-      className={styles['scroll-progress-bar']}
+      className={styles.scrollProgressBar}
       style={{ width: `${scrollPercent}%` }}
     ></div>
   );
-}
+};

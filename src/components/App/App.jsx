@@ -5,10 +5,8 @@ import { Restaurants } from 'src/components/Restaurants/Restaurants';
 
 export const App = () => {
   return (
-    <>
-      <Layout>
-        <Restaurants />
-      </Layout>
-    </>
+    <Layout>
+      <Restaurants />
+    </Layout>
   );
 };

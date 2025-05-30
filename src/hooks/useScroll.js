@@ -5,10 +5,11 @@ export const useScroll = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
       const scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
       setScrollPercent(scrollPercent);
-    }
+    };
 
     window.addEventListener('scroll', handleScroll);
 
@@ -16,4 +17,4 @@ export const useScroll = () => {
   }, []);
 
   return scrollPercent;
-}
+};

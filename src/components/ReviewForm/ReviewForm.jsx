@@ -15,12 +15,8 @@ export const ReviewForm = () => {
   };
 
   return (
-    <div className={styles['review-form']}>
-      <Title
-        level={3}
-        value='Оставить отзыв'
-        className={styles['form-title']}
-      />
+    <div className={styles.reviewForm}>
+      <Title level={3} value='Оставить отзыв' className={styles.formTitle} />
       <form onSubmit={handleSubmit}>
         <FormItem label='Имя:'>
           <input
@@ -28,7 +24,7 @@ export const ReviewForm = () => {
             name='name'
             value={form.name}
             onChange={onNameChange}
-            className={styles['form-input']}
+            className={styles.formInput}
           />
         </FormItem>
         <FormItem label='Текст:'>
@@ -37,7 +33,7 @@ export const ReviewForm = () => {
             name='review'
             value={form.review}
             onChange={onReviewChange}
-            className={styles['form-input']}
+            className={styles.formInput}
           />
         </FormItem>
         <FormItem label='Рейтинг:'>
@@ -49,11 +45,11 @@ export const ReviewForm = () => {
             maxValue={RATING_COUNTER.maxValue}
           />
         </FormItem>
-        <div className={styles['form-actions']}>
-          <button type='button' onClick={clear} className={styles['form-btn']}>
+        <div className={styles.formActions}>
+          <button type='button' onClick={clear} className={styles.formBtn}>
             Очистить форму
           </button>
-          <button type='submit' className={styles['form-btn']}>
+          <button type='submit' className={styles.formBtn}>
             Отправить
           </button>
         </div>

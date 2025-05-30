@@ -5,7 +5,7 @@ import { ScrollProgressBar } from 'src/components/ScrollProgressBar/ScrollProgre
 import styles from './Layout.module.scss';
 
 export const Layout = ({ children }) => (
-  <div className={styles['layout']}>
+  <div className={styles.layout}>
     <ScrollProgressBar />
     <Header />
     {children}

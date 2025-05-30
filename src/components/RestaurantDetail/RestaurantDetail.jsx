@@ -12,8 +12,8 @@ export const RestaurantDetail = ({ restaurant }) => {
   const { name, menu, reviews } = restaurant;
 
   return (
-    <section className={styles['restaurant']}>
-      <Title level={2} className={styles['name']} value={name} />
+    <section className={styles.restaurant}>
+      <Title level={2} className={styles.name} value={name} />
       <Menu menu={menu} />
       <ReviewsList reviews={reviews} />
       <ReviewForm />
