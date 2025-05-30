@@ -1,0 +1,10 @@
+@import '../../styles/colors.scss';
+
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 5px;
+  background-color: $color-background-secondary;
+}

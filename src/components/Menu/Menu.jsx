@@ -9,7 +9,7 @@ export const Menu = ({ menu }) => {
   }
 
   return (
-    <div className={styles['menu']}>
+    <div className={styles.menu}>
       <Title level={3} value='Меню' />
       <ul>
         {menu.map(({ id, ...restProps }) => (

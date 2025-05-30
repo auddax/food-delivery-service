@@ -10,4 +10,9 @@ export default defineConfig({
       materials: "/materials",
     },
   },
-})
+  css: {
+    modules: {
+      localsConvention: 'camelCase',
+    }
+  },
+});

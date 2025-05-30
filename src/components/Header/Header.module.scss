@@ -1,6 +1,15 @@
+@import '../../styles/colors.scss';
+@import '../../styles/fonts.scss';
+
 .header {
   display: flex;
-  padding: 1rem;
+  padding: 3rem;
   justify-content: center;
-  border: 1px solid gray;
+
+  .header-title {
+    color: #003049;
+    font-size: 4rem;
+    font-family: $font-header-primary;
+    font-weight: 500;
+  }
 }

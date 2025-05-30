@@ -21,6 +21,36 @@ export const restaurants = [
         price: 8,
         ingredients: ["chicken", "bread"],
       },
+      {
+        id: "e1f789b2-456a-4c3d-b21f-9876543210ab",
+        name: "Butter Chicken",
+        price: 14,
+        ingredients: ["chicken", "cream", "rice"]
+      },
+      {
+        id: "f2e34567-89ab-4cde-9876-543210abcdef",
+        name: "Papad",
+        price: 2,
+        ingredients: ["lentil", "spices"]
+      },
+      {
+        id: "34567890-abcd-4efg-hijk-lmnopqrstuvw",
+        name: "Biryani",
+        price: 15,
+        ingredients: ["chicken", "rice", "spices"]
+      },
+      {
+        id: "xyz12345-6789-4abc-defg-hijklmnopqrs",
+        name: "Tandoori Chicken",
+        price: 13,
+        ingredients: ["chicken", "spices"]
+      },
+      {
+        id: "uvwxyz12-3456-4789-abcd-efghijklmnop",
+        name: "Raita",
+        price: 4,
+        ingredients: ["yogurt", "cucumber"]
+      },
     ],
     reviews: [
       {
@@ -34,6 +64,24 @@ export const restaurants = [
         user: "Sam",
         text: "No burgers",
         rating: 3,
+      },
+      {
+        id: "78901234-5678-49ab-cdef-ghijklmnopqr",
+        user: "Emily",
+        text: "Amazing flavors!",
+        rating: 5
+      },
+      {
+        id: "stuvwxyz-1234-4567-89ab-cdefghijkl",
+        user: "John",
+        text: "Best Indian food in town",
+        rating: 5
+      },
+      {
+        id: "mnopqrst-uvwxyz-4123-4567-89abcdef",
+        user: "Lisa",
+        text: "Great service",
+        rating: 4
       },
     ],
   },
