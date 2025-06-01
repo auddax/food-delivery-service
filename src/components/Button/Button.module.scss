@@ -1,0 +1,16 @@
+@import '../../styles/colors.scss';
+
+.btn {
+  border: none;
+  color: $color-text-primary;
+  border-radius: 50px;
+  background-color: $color-background-secondary;
+  padding: .5rem 1.5rem;
+  cursor: pointer;
+  transition: .4s;
+
+  &.alt {
+    color: $color-text-secondary;
+    background-color: $color-accent-primary;
+  }
+}

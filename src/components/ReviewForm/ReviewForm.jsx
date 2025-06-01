@@ -1,5 +1,6 @@
 import classnames from 'classnames';
 import { useContext } from 'react';
+import { Button } from 'src/components/Button/Button';
 import { FormItem } from 'src/components/FormItem/FormItem';
 import { RatingCounter } from 'src/components/ReviewForm/RatingCounter';
 import { Title } from 'src/components/Title/Title';
@@ -50,19 +51,12 @@ export const ReviewForm = () => {
           />
         </FormItem>
         <div className={styles.formActions}>
-          <button
-            type='button'
-            onClick={clear}
-            className={classnames(styles.formBtn, styles[theme])}
-          >
+          <Button type='button' onClick={clear} className={theme}>
             Очистить форму
-          </button>
-          <button
-            type='submit'
-            className={classnames(styles.formBtn, styles[theme])}
-          >
+          </Button>
+          <Button type='submit' className={theme}>
             Отправить
-          </button>
+          </Button>
         </div>
       </form>
     </div>
