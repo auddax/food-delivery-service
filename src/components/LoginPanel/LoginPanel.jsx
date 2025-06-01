@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import { useContext } from 'react';
 import { Button } from 'src/components/Button/Button';
 import { UserContext } from 'src/contexts/UserContext/UserContext';
@@ -15,7 +14,7 @@ export const LoginPanel = ({ theme }) => {
       <Button
         type='button'
         onClick={handleOnClick}
-        className={classnames(theme)}
+        className={theme}
       >
         {isAuthorized ? 'Выйти' : 'Войти'}
       </Button>
