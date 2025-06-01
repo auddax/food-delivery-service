@@ -4,10 +4,8 @@ import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeC
 export const ButtonThemeContextProvider = ({ children }) => {
   const [theme, setTheme] = useState('default');
 
-  const switchTheme = () => {
-    setTheme((theme) => {
-      return theme === 'default' ? 'alt' : 'default';
-    });
+  const switchTheme = (isSwitched) => {
+    setTheme(isSwitched ? 'alt' : 'default');
   };
 
   return (

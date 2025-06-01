@@ -8,6 +8,8 @@ import styles from './Header.module.scss';
 export const Header = () => {
   const { switchTheme } = useContext(ButtonThemeContext);
 
+  const handleOnChange = (e) => switchTheme(e.target.checked);
+
   return (
     <section className={styles.header}>
       <Title
@@ -15,7 +17,7 @@ export const Header = () => {
         value='Food Delivery Service'
         className={styles.headerTitle}
       />
-      <Toggler onChange={switchTheme} />
+      <Toggler onChange={handleOnChange} />
     </section>
   );
 };

@@ -1,12 +1,16 @@
+import classnames from 'classnames';
+import { useContext } from 'react';
 import { FormItem } from 'src/components/FormItem/FormItem';
 import { RatingCounter } from 'src/components/ReviewForm/RatingCounter';
 import { Title } from 'src/components/Title/Title';
 import { RATING_COUNTER } from 'src/constants';
+import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeContext';
 import { useForm } from 'src/hooks/useForm';
 
 import styles from './ReviewForm.module.scss';
 
 export const ReviewForm = () => {
+  const { theme } = useContext(ButtonThemeContext);
   const { form, onNameChange, onReviewChange, onRatingChange, clear } =
     useForm();
 
@@ -46,10 +50,17 @@ export const ReviewForm = () => {
           />
         </FormItem>
         <div className={styles.formActions}>
-          <button type='button' onClick={clear} className={styles.formBtn}>
+          <button
+            type='button'
+            onClick={clear}
+            className={classnames(styles.formBtn, styles[theme])}
+          >
             Очистить форму
           </button>
-          <button type='submit' className={styles.formBtn}>
+          <button
+            type='submit'
+            className={classnames(styles.formBtn, styles[theme])}
+          >
             Отправить
           </button>
         </div>
