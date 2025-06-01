@@ -9,3 +9,9 @@ export const RATING_COUNTER = {
   minValue: 1,
   maxValue: 5,
 };
+
+export const INITIAL_USER_INFO = {
+  name: '',
+  review: '',
+  rating: 0,
+};

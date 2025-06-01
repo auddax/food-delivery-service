@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import { useContext } from 'react';
 import { Button } from 'src/components/Button/Button';
 import { FormItem } from 'src/components/FormItem/FormItem';
@@ -6,14 +5,18 @@ import { RatingCounter } from 'src/components/ReviewForm/RatingCounter';
 import { Title } from 'src/components/Title/Title';
 import { RATING_COUNTER } from 'src/constants';
 import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeContext';
+import { UserContext } from 'src/contexts/UserContext/UserContext';
 import { useForm } from 'src/hooks/useForm';
 
 import styles from './ReviewForm.module.scss';
 
 export const ReviewForm = () => {
   const { theme } = useContext(ButtonThemeContext);
+  const { user } = useContext(UserContext);
   const { form, onNameChange, onReviewChange, onRatingChange, clear } =
     useForm();
+
+  if (!user?.isAuthorized) return null;
 
   const handleSubmit = (e) => {
     e.preventDefault();

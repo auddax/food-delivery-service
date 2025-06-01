@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { LoginPanel } from 'src/components/LoginPanel/LoginPanel';
 import { Title } from 'src/components/Title/Title';
 import { Toggler } from 'src/components/Toggler/Toggler';
 import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeContext';
@@ -6,7 +7,7 @@ import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeC
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  const { switchTheme } = useContext(ButtonThemeContext);
+  const { theme, switchTheme } = useContext(ButtonThemeContext);
 
   const handleOnChange = (e) => switchTheme(e.target.checked);
 
@@ -17,7 +18,10 @@ export const Header = () => {
         value='Food Delivery Service'
         className={styles.headerTitle}
       />
-      <Toggler onChange={handleOnChange} />
+      <div className={styles.headerActions}>
+        <LoginPanel theme={theme} />
+        <Toggler onChange={handleOnChange} />
+      </div>
     </section>
   );
 };
