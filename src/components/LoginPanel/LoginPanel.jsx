@@ -11,11 +11,7 @@ export const LoginPanel = ({ theme }) => {
   return (
     <>
       {userInfo?.name && <span>{userInfo.name}</span>}
-      <Button
-        type='button'
-        onClick={handleOnClick}
-        className={theme}
-      >
+      <Button type='button' onClick={handleOnClick} className={theme}>
         {isAuthorized ? 'Выйти' : 'Войти'}
       </Button>
     </>
