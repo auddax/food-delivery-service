@@ -6,14 +6,10 @@ export const LoginPanel = () => {
   const { user, onLogin, onLogout } = useContext(UserContext) || {};
   const { userInfo, isAuthorized } = user || {};
 
-  const handleOnClick = () => {
-    isAuthorized ? onLogout() : onLogin();
-  };
-
   return (
     <>
       {userInfo?.name && <span>{userInfo.name}</span>}
-      <Button type='button' onClick={handleOnClick}>
+      <Button type='button' onClick={isAuthorized ? onLogout : onLogin}>
         {isAuthorized ? 'Выйти' : 'Войти'}
       </Button>
     </>
