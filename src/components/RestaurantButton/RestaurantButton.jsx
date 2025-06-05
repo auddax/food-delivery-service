@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { selectRestaurantById } from 'src/store/slices/restaurant/restaurant.slice';
 
-import styles from './NavigationButton.module.scss';
+import styles from './RestaurantButton.module.scss';
 
-export const NavigationButton = ({ id, handleClick }) => {
+export const RestaurantButton = ({ id, handleClick }) => {
   const { name } =
     useSelector((state) => selectRestaurantById(state, id)) || {};
 
