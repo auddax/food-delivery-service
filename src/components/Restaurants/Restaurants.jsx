@@ -1,18 +1,17 @@
-import { restaurants } from 'materials/mock';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NavigationBar } from 'src/components/NavigationBar/NavigationBar';
 import { RestaurantDetail } from 'src/components/RestaurantDetail/RestaurantDetail';
-import { keyBy } from 'src/utils/helpers';
-
-const restaurantsById = keyBy(restaurants);
+import { selectRestaurantIds } from 'src/store/slices/restaurant/restaurant.slice';
 
 export const Restaurants = () => {
-  const [restaurantId, setRestaurantId] = useState(restaurants[0].id || '');
+  const restaurantIds = useSelector(selectRestaurantIds);
+  const [restaurantId, setRestaurantId] = useState(restaurantIds[0] || '');
 
   return (
     <>
-      <NavigationBar items={restaurants} onButtonClick={setRestaurantId} />
-      <RestaurantDetail restaurant={restaurantsById[restaurantId]} />
+      <NavigationBar items={restaurantIds} onButtonClick={setRestaurantId} />
+      <RestaurantDetail restaurantId={restaurantId} />
     </>
   );
 };
