@@ -13,6 +13,10 @@ export const cartSlice = createSlice({
 
       if (state[payload] === 0) delete state[payload];
     },
+    removeAllFromCart: (state, { payload }) => {
+      if (!state[payload]) return;
+      delete state[payload];
+    },
   },
   selectors: {
     selectItemAmountById: (state, id) => state[id] || 0,
@@ -25,5 +29,6 @@ export const selectCartItems = createSelector([selectCartSlice], (cartSlice) =>
   Object.keys(cartSlice)
 );
 
-export const { addToCart, removeFromCart } = cartSlice.actions;
-export const { selectItemAmountById } = cartSlice.selectors;
+export const { addToCart, removeFromCart, removeAllFromCart } =
+  cartSlice.actions;
+export const { selectItemAmountById, selectTotalPrice } = cartSlice.selectors;
