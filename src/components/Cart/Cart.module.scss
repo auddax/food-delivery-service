@@ -1,0 +1,20 @@
+@import '../../styles/colors.scss';
+
+.cart {
+  position: fixed;
+  right: 2rem;
+  bottom: 6rem;
+  padding: 1rem;
+  background-color: $color-background-secondary;
+  border-radius: .5rem;
+  min-width: 25rem;
+
+  .cart-empty {
+    text-align: center;
+    margin: 2rem 0
+  }
+
+  &.hidden {
+    display: none;
+  }
+}
