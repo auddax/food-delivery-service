@@ -15,7 +15,7 @@ export const MenuItem = ({ id }) => {
       <Title level={4} value={name} />
       <ItemDetail title='Цена:' value={`${price}$`} />
       <ItemDetail title='Состав:' value={ingredients?.join(', ')} />
-      <ItemDetail title='Количество:' value={<MenuItemCounter />} />
+      <ItemDetail title='Количество:' value={<MenuItemCounter id={id} />} />
     </li>
   );
 };
