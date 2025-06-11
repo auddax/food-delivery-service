@@ -6,7 +6,7 @@ import { Title } from 'src/components/Title/Title';
 import styles from './Header.module.scss';
 
 export const Header = () => (
-  <section className={styles.header}>
+  <header className={styles.header}>
     <Title
       level={1}
       value='Food Delivery Service'
@@ -17,5 +17,5 @@ export const Header = () => (
       <ThemeToggler />
     </div>
     <AppBar />
-  </section>
+  </header>
 );

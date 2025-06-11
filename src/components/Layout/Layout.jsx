@@ -9,7 +9,9 @@ export const Layout = () => (
   <div className={styles.layout}>
     <ScrollProgressBar />
     <Header />
-    <Outlet />
+    <main>
+      <Outlet />
+    </main>
     <Footer />
   </div>
 );

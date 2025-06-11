@@ -3,7 +3,7 @@ import { Title } from 'src/components/Title/Title';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => (
-  <div className={styles.homePage}>
+  <section className={styles.homePage}>
     <Title
       level={3}
       value='Welcome to a world of culinary delights where your favorite dishes are
@@ -40,5 +40,5 @@ export const HomePage = () => (
       <p>🎁 Rewards Program – Earn points with every order</p>
     </div>
     <Title level={4} value='Bon Appétit!' className={styles.homePageTitle} />
-  </div>
+  </section>
 );

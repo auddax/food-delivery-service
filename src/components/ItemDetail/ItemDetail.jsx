@@ -1,8 +1,8 @@
-export const ItemDetail = ({ title, value }) => {
+export const ItemDetail = ({ title, value, className }) => {
   if (!value) return null;
 
   return (
-    <div>
+    <div className={className}>
       <span>
         {title} {value}
       </span>

@@ -1,17 +1,18 @@
 import { useSelector } from 'react-redux';
+import { NavigationLink } from 'src/components/NavigationLink/NavigationLink';
 import { selectRestaurantById } from 'src/store/slices/restaurant/restaurant.slice';
 
-import styles from './RestaurantButton.module.scss';
+import styles from './RestaurantLink.module.scss';
 
-export const RestaurantButton = ({ id, handleClick }) => {
+export const RestaurantLink = ({ id }) => {
   const { name } =
     useSelector((state) => selectRestaurantById(state, id)) || {};
 
   if (!name) return null;
 
   return (
-    <button className={styles.navBtn} onClick={handleClick}>
+    <NavigationLink className={styles.navBtn} path={id}>
       {name}
-    </button>
+    </NavigationLink>
   );
 };

@@ -9,3 +9,21 @@ export const INITIAL_USER_INFO = {
   review: '',
   rating: 0,
 };
+
+export const APP_PATHS = {
+  HOME: '/',
+  RESTAURANTS: 'restaurants',
+};
+
+export const RESTAURANT_PATHS = {
+  RESTAURANT: ':restaurantId',
+};
+
+export const RESTAURANT_DETAIL_PATHS = {
+  MENU: 'menu',
+  REVIEWS: 'reviews',
+};
+
+export const DISH_PATHS = {
+  DISH: 'dish/:dishId',
+};

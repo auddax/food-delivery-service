@@ -1,0 +1,19 @@
+.detail-bar {
+  justify-content: start;
+  // margin: 0;
+
+  .detail-bar-link {
+    padding: 0.5rem 2rem;
+    cursor: pointer;
+        border-left: 1px solid #000;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #003049;
+
+    &:last-of-type {
+      border-right: 1px solid #000;
+    }
+
+  }
+}
