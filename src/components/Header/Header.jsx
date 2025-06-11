@@ -1,3 +1,4 @@
+import { AppBar } from 'src/components/AppBar/AppBar';
 import { LoginPanel } from 'src/components/LoginPanel/LoginPanel';
 import { ThemeToggler } from 'src/components/ThemeToggler/ThemeToggler';
 import { Title } from 'src/components/Title/Title';
@@ -15,5 +16,6 @@ export const Header = () => (
       <LoginPanel />
       <ThemeToggler />
     </div>
+    <AppBar />
   </section>
 );
