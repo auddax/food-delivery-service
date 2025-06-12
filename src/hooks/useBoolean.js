@@ -3,9 +3,9 @@ import { useState } from 'react';
 export const useBoolean = (initailState = false) => {
   const [isTrue, setIsTrue] = useState(initailState);
 
-  const setTrue = () => setIsTrue(true);
-  const setFalse = () => setIsTrue(false);
+  const open = () => setIsTrue(true);
+  const close = () => setIsTrue(false);
   const toggle = () => setIsTrue((isTrue) => !isTrue);
 
-  return [isTrue, { setTrue, setFalse, toggle }];
+  return [isTrue, { open, close, toggle }];
 };

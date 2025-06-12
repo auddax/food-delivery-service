@@ -34,7 +34,6 @@ export const App = () => (
                 >
                   <Route index element={<MenuPage />} />
                   <Route
-                    index
                     path={RESTAURANT_DETAIL_PATHS.MENU}
                     element={<MenuPage />}
                   />
