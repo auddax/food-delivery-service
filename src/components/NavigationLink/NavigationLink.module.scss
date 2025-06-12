@@ -1,16 +1,16 @@
 @import '../../styles/colors.scss';
 
-.nav-btn {
-  padding: .5rem 2rem;
+.nav-link {
+  padding: 0 2rem;
   cursor: pointer;
   border: none;
-  border-left: 1px solid #000;
   background-color: transparent;
-  font-weight: 400;
+  font-weight: 600;
   text-transform: uppercase;
   color: $color-text-primary;
+  text-decoration: none;
 
-  &:last-of-type {
-    border-right: 1px solid #000;
+  &:hover {
+    text-decoration: underline;
   }
 }

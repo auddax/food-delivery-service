@@ -11,7 +11,7 @@ export const Button = ({ type, onClick, className, children }) => {
     <button
       type={type}
       onClick={onClick}
-      className={classnames(styles.btn, styles[theme], styles[className])}
+      className={classnames(styles.btn, styles[theme], className)}
     >
       {children}
     </button>

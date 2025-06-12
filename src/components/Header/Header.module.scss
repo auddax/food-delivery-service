@@ -2,15 +2,14 @@
 @import '../../styles/fonts.scss';
 
 .header {
-  display: flex;
-  padding: 3rem;
-  justify-content: center;
-
   .header-title {
     color: #003049;
     font-size: 4rem;
     font-family: $font-header-primary;
     font-weight: 500;
+    display: flex;
+    padding: 3rem;
+    justify-content: center;
   }
 
   .header-actions {

@@ -1,0 +1,21 @@
+@import '../../styles/colors.scss';
+
+.nav-btn {
+  padding: .5rem 2rem;
+  cursor: pointer;
+  border: none;
+  border-left: 1px solid #000;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: .85rem;
+  text-transform: uppercase;
+  color: $color-text-primary;
+
+  &:last-of-type {
+    border-right: 1px solid #000;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

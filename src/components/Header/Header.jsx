@@ -1,3 +1,4 @@
+import { AppBar } from 'src/components/AppBar/AppBar';
 import { LoginPanel } from 'src/components/LoginPanel/LoginPanel';
 import { ThemeToggler } from 'src/components/ThemeToggler/ThemeToggler';
 import { Title } from 'src/components/Title/Title';
@@ -5,7 +6,7 @@ import { Title } from 'src/components/Title/Title';
 import styles from './Header.module.scss';
 
 export const Header = () => (
-  <section className={styles.header}>
+  <header className={styles.header}>
     <Title
       level={1}
       value='Food Delivery Service'
@@ -15,5 +16,6 @@ export const Header = () => (
       <LoginPanel />
       <ThemeToggler />
     </div>
-  </section>
+    <AppBar />
+  </header>
 );

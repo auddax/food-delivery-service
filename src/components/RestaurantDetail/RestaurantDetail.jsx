@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux';
-import { Menu } from 'src/components/Menu/Menu';
-import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';
-import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
+import { RestaurantDetailBar } from 'src/components/RestaurantDetailBar/RestaurantDetailBar';
 import { Title } from 'src/components/Title/Title';
 import { selectRestaurantById } from 'src/store/slices/restaurant/restaurant.slice';
 
@@ -14,14 +12,12 @@ export const RestaurantDetail = ({ restaurantId }) => {
 
   if (!restaurant) return null;
 
-  const { name, menu, reviews } = restaurant;
+  const { name } = restaurant;
 
   return (
-    <section className={styles.restaurant}>
+    <div className={styles.restaurantDetail}>
       <Title level={2} className={styles.name} value={name} />
-      <Menu menu={menu} />
-      <ReviewsList reviews={reviews} />
-      <ReviewForm />
-    </section>
+      <RestaurantDetailBar />
+    </div>
   );
 };
