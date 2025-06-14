@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from 'src/constants';
-import {
-  loadAllRestaurants,
-} from 'src/store/slices/restaurant/restaurant.thunk';
+import { loadAllRestaurants } from 'src/store/slices/restaurant/restaurant.thunk';
 import { keyBy } from 'src/utils/helpers';
 
 const initialState = {
@@ -38,7 +36,7 @@ export const restaurantSlice = createSlice({
           message: payload,
         };
         state.requestStatus = REQUEST_STATUS.REJECTED;
-      })
+      });
   },
 });
 

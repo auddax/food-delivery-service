@@ -1,18 +1,14 @@
 import { useSelector } from 'react-redux';
 import { ReviewItem } from 'src/components/ReviewItem/ReviewItem';
 import { Title } from 'src/components/Title/Title';
-import { selectRestaurantById } from 'src/store/slices/restaurant/restaurant.slice';
+import { selectReveiwIds } from 'src/store/slices/review/review.slice';
 
 import styles from './ReviewsList.module.scss';
 
-export const ReviewsList = ({ restaurantId }) => {
-  const restaurant = useSelector((state) =>
-    selectRestaurantById(state, restaurantId)
-  );
+export const ReviewsList = () => {
+  const reviews = useSelector(selectReveiwIds);
 
-  if (!restaurant) return null;
-
-  const { reviews } = restaurant;
+  if (!reviews?.length) return null;
 
   return (
     <div className={styles.reviewsList}>

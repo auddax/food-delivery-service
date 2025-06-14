@@ -24,7 +24,7 @@ export const restaurantDetailSlice = createSlice({
       .addCase(loadRestaurantDetail.fulfilled, (state, { payload }) => {
         if (!payload) return;
 
-        state.restaurant = payload
+        state.restaurant = payload;
         state.requestStatus = REQUEST_STATUS.FULFILLED;
       })
       .addCase(loadRestaurantDetail.rejected, (state, { payload }) => {
@@ -32,12 +32,9 @@ export const restaurantDetailSlice = createSlice({
           message: payload,
         };
         state.requestStatus = REQUEST_STATUS.REJECTED;
-      })
+      });
   },
 });
 
-export const {
-  selectRestaurant,
-  selectRequestStatus,
-  selectError,
-} = restaurantDetailSlice.selectors;
+export const { selectRestaurant, selectRequestStatus, selectError } =
+  restaurantDetailSlice.selectors;
