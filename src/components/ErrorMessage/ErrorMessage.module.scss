@@ -1,0 +1,14 @@
+@import '../../styles/colors.scss';
+
+.error-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+  margin: 1rem auto;
+  padding: 2rem;
+  background-color: $color-background-secondary;
+  border-radius: .5rem;
+  width: 30rem;
+}
