@@ -1,38 +1,32 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
-import { REQUEST_STATUS } from 'src/constants';
-import {
-  selectError,
-  selectRequestStatus,
-} from 'src/store/slices/review/review.slice';
+import { useRequest } from 'src/hooks/useRequest';
 import { loadReviewsByRestaurantId } from 'src/store/slices/review/review.thunk';
 import { loadAllUsers } from 'src/store/slices/user/user.thunk';
 
 export const ReviewsPage = () => {
-  const dispatch = useDispatch();
   const { restaurantId } = useParams();
-  const requestStatus = useSelector(selectRequestStatus);
-  const error = useSelector(selectError);
+  const { isLoading: isReviewsLoading, error: reviewsError } = useRequest(
+    loadReviewsByRestaurantId,
+    restaurantId
+  );
+  const { isLoading: isUsersLoading, error: usersError } =
+    useRequest(loadAllUsers);
 
-  useEffect(() => {
-    dispatch(loadReviewsByRestaurantId(restaurantId));
-  }, [dispatch, restaurantId]);
-
-  useEffect(() => {
-    dispatch(loadAllUsers());
-  }, [dispatch]);
-
-  if (requestStatus === REQUEST_STATUS.PENDING) {
+  if (isReviewsLoading || isUsersLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return <ErrorMessage message={error.message} />;
+  if (reviewsError || usersError) {
+    return (
+      <>
+        {reviewsError && <ErrorMessage message={reviewsError.message} />}
+        {usersError && <ErrorMessage message={usersError.message} />}
+      </>
+    );
   }
 
   return (

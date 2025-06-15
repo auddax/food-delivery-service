@@ -1,12 +1,14 @@
 import { useSelector } from 'react-redux';
 import { RestaurantDetailBar } from 'src/components/RestaurantDetailBar/RestaurantDetailBar';
 import { Title } from 'src/components/Title/Title';
-import { selectRestaurant } from 'src/store/slices/restaurantDetail/restaurantDetail.slice';
+import { selectRestaurantById } from 'src/store/slices/restaurant/restaurant.slice';
 
 import styles from './RestaurantDetail.module.scss';
 
-export const RestaurantDetail = () => {
-  const restaurant = useSelector(selectRestaurant);
+export const RestaurantDetail = ({ restaurantId }) => {
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantId)
+  );
 
   if (!restaurant) return null;
 
