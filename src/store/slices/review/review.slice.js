@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { REQUEST_STATUS } from 'src/constants';
-import { loadReveiwsByRestaurantId } from 'src/store/slices/review/review.thunk';
+import { loadReviewsByRestaurantId } from 'src/store/slices/review/review.thunk';
 import { keyBy } from 'src/utils/helpers';
 
 const initialState = {
@@ -21,17 +21,17 @@ export const reviewSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadReveiwsByRestaurantId.pending, (state) => {
+      .addCase(loadReviewsByRestaurantId.pending, (state) => {
         state.requestStatus = REQUEST_STATUS.PENDING;
       })
-      .addCase(loadReveiwsByRestaurantId.fulfilled, (state, { payload }) => {
+      .addCase(loadReviewsByRestaurantId.fulfilled, (state, { payload }) => {
         if (!payload) return;
 
         state.ids = payload?.map(({ id }) => id);
         state.reviews = keyBy(payload);
         state.requestStatus = REQUEST_STATUS.FULFILLED;
       })
-      .addCase(loadReveiwsByRestaurantId.rejected, (state, { payload }) => {
+      .addCase(loadReviewsByRestaurantId.rejected, (state, { payload }) => {
         state.error = {
           message: payload,
         };

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getReveiwsByRestaurantId } from 'src/api/review';
 
-export const loadReveiwsByRestaurantId = createAsyncThunk(
-  'restaurant/loadReveiwsByRestaurantId',
+export const loadReviewsByRestaurantId = createAsyncThunk(
+  'restaurant/loadReviewsByRestaurantId',
   async (id, { rejectWithValue }) => {
     try {
       const data = await getReveiwsByRestaurantId(id);

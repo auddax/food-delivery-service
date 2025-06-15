@@ -10,7 +10,8 @@ import {
   selectError,
   selectRequestStatus,
 } from 'src/store/slices/review/review.slice';
-import { loadReveiwsByRestaurantId } from 'src/store/slices/review/review.thunk';
+import { loadReviewsByRestaurantId } from 'src/store/slices/review/review.thunk';
+import { loadAllUsers } from 'src/store/slices/user/user.thunk';
 
 export const ReviewsPage = () => {
   const dispatch = useDispatch();
@@ -19,8 +20,12 @@ export const ReviewsPage = () => {
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(loadReveiwsByRestaurantId(restaurantId));
+    dispatch(loadReviewsByRestaurantId(restaurantId));
   }, [dispatch, restaurantId]);
+
+  useEffect(() => {
+    dispatch(loadAllUsers());
+  }, [dispatch]);
 
   if (requestStatus === REQUEST_STATUS.PENDING) {
     return <Loader />;
