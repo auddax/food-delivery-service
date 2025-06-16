@@ -9,6 +9,7 @@ import styles from './ReviewItem.module.scss';
 export const ReviewItem = ({ id }) => {
   const { userId, text, rating } =
     useSelector((state) => selectReviewById(state, id)) || {};
+
   const { name } = useSelector((state) => selectUserById(state, userId)) || {};
 
   return (

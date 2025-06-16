@@ -27,3 +27,12 @@ export const RESTAURANT_DETAIL_PATHS = {
 export const DISH_PATHS = {
   DISH: 'dish/:dishId',
 };
+
+export const BASE_URL = 'http://localhost:3001';
+
+export const REQUEST_STATUS = {
+  IDLE: 'idle',
+  PENDING: 'pending',
+  FULFILLED: 'fullfilled',
+  REJECTED: 'rejected',
+};
