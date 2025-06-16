@@ -1,37 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import {
   loadAllRestaurants,
   loadRestaurantDetail,
 } from 'src/store/slices/restaurant/restaurant.thunk';
-import { keyBy } from 'src/utils/helpers';
 
-const initialState = {
-  ids: [],
-  restaurants: {},
-};
+const entityAdapter = createEntityAdapter();
 
 export const restaurantSlice = createSlice({
   name: 'restaurantSlice',
-  initialState,
-  selectors: {
-    selectRestaurantIds: (state) => state.ids,
-    selectRestaurantById: (state, id) => state.restaurants[id],
-  },
+  initialState: entityAdapter.getInitialState(),
   extraReducers: (builder) => {
     builder
       .addCase(loadAllRestaurants.fulfilled, (state, { payload }) => {
-        if (!payload) return;
-
-        state.ids = payload?.map(({ id }) => id);
-        state.restaurants = keyBy(payload);
+        entityAdapter.setAll(state, payload);
       })
       .addCase(loadRestaurantDetail.fulfilled, (state, { payload }) => {
-        if (!payload) return;
-
-        state[payload.id] = payload;
+        entityAdapter.setOne(state, payload);
       });
   },
 });
 
-export const { selectRestaurantIds, selectRestaurantById } =
-  restaurantSlice.selectors;
+const selectRestaurantSlice = (state) => state[restaurantSlice.name];
+
+export const {
+  selectIds: selectRestaurantIds,
+  selectById: selectRestaurantById,
+} = entityAdapter.getSelectors(selectRestaurantSlice);

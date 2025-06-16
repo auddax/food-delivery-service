@@ -1,36 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import {
   loadDishDetail,
   loadDishesByRestaurantId,
 } from 'src/store/slices/dish/dish.thunk';
-import { keyBy } from 'src/utils/helpers';
 
-const initialState = {
-  ids: [],
-  dishes: {},
-};
+const entityAdapter = createEntityAdapter();
 
 export const dishSlice = createSlice({
   name: 'dishSlice',
-  initialState,
-  selectors: {
-    selectDishIds: (state) => state.ids,
-    selectDishById: (state, id) => state.dishes[id],
-  },
+  initialState: entityAdapter.getInitialState(),
   extraReducers: (builder) => {
     builder
       .addCase(loadDishesByRestaurantId.fulfilled, (state, { payload }) => {
-        if (!payload) return;
-
-        state.ids = payload?.map(({ id }) => id);
-        state.dishes = keyBy(payload);
+        entityAdapter.setAll(state, payload);
       })
       .addCase(loadDishDetail.fulfilled, (state, { payload }) => {
-        if (!payload) return;
-
-        state[payload.id] = payload;
+        entityAdapter.setOne(state, payload);
       });
   },
 });
 
-export const { selectDishIds, selectDishById } = dishSlice.selectors;
+const selectDishSlice = (state) => state[dishSlice.name];
+
+export const { selectIds: selectDishIds, selectById: selectDishById } =
+  entityAdapter.getSelectors(selectDishSlice);
