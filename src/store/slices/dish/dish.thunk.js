@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { getDishById, getDishesByRestaurantId } from 'src/api/dish';
+import { selectDishById } from 'src/store/slices/dish/dish.slice';
 
 export const loadDishesByRestaurantId = createAsyncThunk(
   'restaurant/loadDishesByRestaurantId',
@@ -24,5 +25,10 @@ export const loadDishDetail = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (id, { getState }) => {
+      return !selectDishById(getState(), id);
+    },
   }
 );
