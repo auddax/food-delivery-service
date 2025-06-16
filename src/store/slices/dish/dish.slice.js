@@ -1,10 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { normalizedDishes } from 'materials/normalized-mock';
+import {
+  loadDishDetail,
+  loadDishesByRestaurantId,
+} from 'src/store/slices/dish/dish.thunk';
 import { keyBy } from 'src/utils/helpers';
 
 const initialState = {
-  ids: normalizedDishes?.map(({ id }) => id),
-  dishes: keyBy(normalizedDishes),
+  ids: [],
+  dishes: {},
 };
 
 export const dishSlice = createSlice({
@@ -13,6 +16,20 @@ export const dishSlice = createSlice({
   selectors: {
     selectDishIds: (state) => state.ids,
     selectDishById: (state, id) => state.dishes[id],
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadDishesByRestaurantId.fulfilled, (state, { payload }) => {
+        if (!payload) return;
+
+        state.ids = payload?.map(({ id }) => id);
+        state.dishes = keyBy(payload);
+      })
+      .addCase(loadDishDetail.fulfilled, (state, { payload }) => {
+        if (!payload) return;
+
+        state[payload.id] = payload;
+      });
   },
 });
 

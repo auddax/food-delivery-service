@@ -3,7 +3,6 @@ import { Outlet } from 'react-router';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { RestaurantsBar } from 'src/components/RestaurantsBar/RestaurantsBar';
-import { REQUEST_STATUS } from 'src/constants';
 import { useRequest } from 'src/hooks/useRequest';
 import { selectRestaurantIds } from 'src/store/slices/restaurant/restaurant.slice';
 import { loadAllRestaurants } from 'src/store/slices/restaurant/restaurant.thunk';
