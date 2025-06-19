@@ -4,6 +4,7 @@ import { Loader } from 'src/components/Loader/Loader';
 import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
 import {
+  useAddReviewMutation,
   useGetAllUsersQuery,
   useGetReviewsByRestaurantIdQuery,
 } from 'src/store/api';
@@ -24,6 +25,12 @@ export const ReviewsPage = () => {
     error: usersError,
   } = useGetAllUsersQuery();
 
+  const [addReviewMutation, { isLoading }] = useAddReviewMutation();
+
+  const handleAddReview = (review) => {
+    addReviewMutation({ restaurantId, review });
+  };
+
   if (isReviewsLoading || isUsersLoading) {
     return <Loader />;
   }
@@ -39,8 +46,8 @@ export const ReviewsPage = () => {
 
   return (
     <>
-      <ReviewsList reviews={reviews} users={users} />
-      <ReviewForm />
+      <ReviewsList reviews={reviews} users={users} isLoading={isLoading} />
+      <ReviewForm onSubmitForm={handleAddReview} isSubmitDisabled={isLoading} />
     </>
   );
 };

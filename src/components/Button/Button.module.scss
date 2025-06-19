@@ -15,4 +15,9 @@
     background-color: $color-accent-primary;
     border: none;
   }
+
+  &[disabled] {
+    opacity: .7;
+    cursor: not-allowed;
+  }
 }

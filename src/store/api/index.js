@@ -4,6 +4,7 @@ import { BASE_URL } from 'src/constants';
 export const api = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
+  tagTypes: ['Reviews'],
   endpoints: (builder) => ({
     getAllRestaurants: builder.query({
       query: () => '/restaurants',
@@ -19,9 +20,18 @@ export const api = createApi({
     }),
     getReviewsByRestaurantId: builder.query({
       query: (restaurantId) => `/reviews?restaurantId=${restaurantId}`,
+      providesTags: [{ type: 'Reviews', id: 'all' }],
     }),
     getAllUsers: builder.query({
       query: () => '/users',
+    }),
+    addReview: builder.mutation({
+      query: ({ restaurantId, review }) => ({
+        url: `/review/${restaurantId}`,
+        method: 'POST',
+        body: review,
+      }),
+      invalidatesTags: [{ type: 'Reviews', id: 'all' }],
     }),
   }),
 });
@@ -33,4 +43,5 @@ export const {
   useGetDishesByRestaurantIdQuery,
   useGetReviewsByRestaurantIdQuery,
   useGetAllUsersQuery,
+  useAddReviewMutation,
 } = api;

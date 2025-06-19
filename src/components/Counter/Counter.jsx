@@ -10,6 +10,7 @@ export const Counter = ({ count, increment, decrement }) => {
   return (
     <span className={classnames(styles.counter, styles[theme])}>
       <button
+        type='button'
         className={classnames(styles.counterBtn, styles[theme])}
         onClick={decrement}
       >
@@ -17,6 +18,7 @@ export const Counter = ({ count, increment, decrement }) => {
       </button>
       <span className={classnames(styles.count, styles[theme])}>{count}</span>
       <button
+        type='button'
         className={classnames(styles.counterBtn, styles[theme])}
         onClick={increment}
       >

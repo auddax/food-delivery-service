@@ -4,14 +4,13 @@ import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeC
 
 import styles from './Button.module.scss';
 
-export const Button = ({ type, onClick, className, children }) => {
+export const Button = ({ className, children, ...props }) => {
   const { theme } = useContext(ButtonThemeContext);
 
   return (
     <button
-      type={type}
-      onClick={onClick}
       className={classnames(styles.btn, styles[theme], className)}
+      {...props}
     >
       {children}
     </button>
