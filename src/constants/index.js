@@ -28,11 +28,11 @@ export const DISH_PATHS = {
   DISH: 'dish/:dishId',
 };
 
-export const BASE_URL = 'http://localhost:3001';
+export const BASE_URL = 'http://localhost:3001/api';
 
 export const REQUEST_STATUS = {
   IDLE: 'idle',
   PENDING: 'pending',
-  FULFILLED: 'fullfilled',
+  FULFILLED: 'fulfilled',
   REJECTED: 'rejected',
 };

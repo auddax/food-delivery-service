@@ -1,20 +1,17 @@
-import { useSelector } from 'react-redux';
 import { ItemDetail } from 'src/components/ItemDetail/ItemDetail';
 import { Title } from 'src/components/Title/Title';
-import { selectReviewById } from 'src/store/slices/review/review.slice';
-import { selectUserById } from 'src/store/slices/user/user.slice';
 
 import styles from './ReviewItem.module.scss';
 
-export const ReviewItem = ({ id }) => {
-  const { userId, text, rating } =
-    useSelector((state) => selectReviewById(state, id)) || {};
+export const ReviewItem = ({ review, users }) => {
+  if (!review) return null;
 
-  const { name } = useSelector((state) => selectUserById(state, userId)) || {};
+  const { userId, text, rating } = review;
+  const user = users.find((user) => user.id === userId);
 
   return (
     <li className={styles.review}>
-      <Title level={4} value={name} />
+      <Title level={4} value={user?.name} />
       <ItemDetail title='Отзыв:' value={text} />
       <ItemDetail title='Oценка:' value={rating} />
     </li>
