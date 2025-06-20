@@ -1,16 +1,21 @@
+import { useContext } from 'react';
 import { useParams } from 'react-router';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';
 import { ReviewsList } from 'src/components/ReviewsList/ReviewsList';
+import { UserContext } from 'src/contexts/UserContext/UserContext';
 import {
   useAddReviewMutation,
+  useEditReviewMutation,
   useGetAllUsersQuery,
   useGetReviewsByRestaurantIdQuery,
 } from 'src/store/api';
+import { keyBy } from 'src/utils/helpers';
 
 export const ReviewsPage = () => {
   const { restaurantId } = useParams();
+  const { user } = useContext(UserContext);
   const {
     data: reviews,
     isLoading: isReviewsLoading,
@@ -25,10 +30,24 @@ export const ReviewsPage = () => {
     error: usersError,
   } = useGetAllUsersQuery();
 
-  const [addReviewMutation, { isLoading }] = useAddReviewMutation();
+  const [addReviewMutation, { isLoading: isAddReviewLoading }] =
+    useAddReviewMutation();
+  const [editReviewMutation, { isLoading: isEditReviewLoading }] =
+    useEditReviewMutation();
 
-  const handleAddReview = (review) => {
-    addReviewMutation({ restaurantId, review });
+  const reviewsByUserId = keyBy(reviews, 'userId');
+
+  const handleSubmitReview = (review) => {
+    const { userInfo } = user || {};
+    const currentUserReview = reviewsByUserId[userInfo.id];
+
+    if (currentUserReview) {
+      editReviewMutation({ reviewId: currentUserReview.id, review });
+    }
+
+    if (!currentUserReview) {
+      addReviewMutation({ restaurantId, review });
+    }
   };
 
   if (isReviewsLoading || isUsersLoading) {
@@ -46,8 +65,16 @@ export const ReviewsPage = () => {
 
   return (
     <>
-      <ReviewsList reviews={reviews} users={users} isLoading={isLoading} />
-      <ReviewForm onSubmitForm={handleAddReview} isSubmitDisabled={isLoading} />
+      <ReviewsList
+        reviews={reviews}
+        users={users}
+        isLoading={isAddReviewLoading || isEditReviewLoading}
+      />
+      <ReviewForm
+        review={reviewsByUserId[user?.userInfo?.id]}
+        onSubmitForm={handleSubmitReview}
+        isSubmitDisabled={isAddReviewLoading || isEditReviewLoading}
+      />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Button } from 'src/components/Button/Button';
 import { FormItem } from 'src/components/FormItem/FormItem';
 import { RatingCounter } from 'src/components/ReviewForm/RatingCounter';
@@ -9,10 +9,18 @@ import { useForm } from 'src/hooks/useForm';
 
 import styles from './ReviewForm.module.scss';
 
-export const ReviewForm = ({ onSubmitForm, isSubmitDisabled }) => {
+export const ReviewForm = ({ review, onSubmitForm, isSubmitDisabled }) => {
   const { user } = useContext(UserContext);
-  const { form, onNameChange, onReviewChange, onRatingChange, clear } =
+  const { form, onNameChange, onReviewChange, onRatingChange, setForm, clear } =
     useForm();
+
+  useEffect(() => {
+    if (!review || !user) return;
+    setForm({
+      name: user.userInfo.name,
+      ...review,
+    });
+  }, [review, setForm, user]);
 
   if (!user?.isAuthorized) return null;
 

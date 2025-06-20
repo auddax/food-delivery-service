@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 import { RATING_COUNTER } from 'src/constants';
 
 const initialState = {
@@ -10,6 +10,7 @@ const initialState = {
 const SET_NAME_ACTION = 'setName';
 const SET_REVIEW_ACTION = 'setReview';
 const SET_RATING_ACTION = 'setRating';
+const SET_FORM_ACTION = 'setForm';
 const SET_CLEAR_ACTION = 'clear';
 
 const reducer = (state, { type, payload }) => {
@@ -29,6 +30,8 @@ const reducer = (state, { type, payload }) => {
         ...state,
         rating: payload,
       };
+    case SET_FORM_ACTION:
+      return payload;
     case SET_CLEAR_ACTION:
       return initialState;
     default:
@@ -51,9 +54,13 @@ export const useForm = () => {
     dispatch({ type: SET_RATING_ACTION, payload: rating });
   };
 
+  const setForm = useCallback(({ name, text, rating }) => {
+    dispatch({ type: SET_FORM_ACTION, payload: { name, text, rating } });
+  }, []);
+
   const clear = () => {
     dispatch({ type: SET_CLEAR_ACTION });
   };
 
-  return { form, onNameChange, onReviewChange, onRatingChange, clear };
+  return { form, onNameChange, onReviewChange, onRatingChange, setForm, clear };
 };
