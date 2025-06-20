@@ -2,20 +2,19 @@ import { useParams } from 'react-router';
 import { Dish } from 'src/components/Dish/Dish';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
-import { useRequest } from 'src/hooks/useRequest';
-import { loadDishDetail } from 'src/store/slices/dish/dish.thunk';
+import { useGetDishByIdQuery } from 'src/store/api';
 
 export const DishPage = () => {
   const { dishId } = useParams();
-  const { isLoading, error } = useRequest(loadDishDetail, dishId);
+  const { data, isLoading, isError, error } = useGetDishByIdQuery(dishId);
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return <ErrorMessage message={error.message} />;
+  if (isError) {
+    return <ErrorMessage message={error.data} />;
   }
 
-  return <Dish id={dishId} />;
+  return <Dish dish={data} />;
 };

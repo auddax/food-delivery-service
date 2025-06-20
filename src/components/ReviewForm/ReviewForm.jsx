@@ -9,15 +9,21 @@ import { useForm } from 'src/hooks/useForm';
 
 import styles from './ReviewForm.module.scss';
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ review, onSubmitForm, isSubmitDisabled }) => {
   const { user } = useContext(UserContext);
-  const { form, onNameChange, onReviewChange, onRatingChange, clear } =
-    useForm();
-
-  if (!user?.isAuthorized) return null;
+  const { form, onNameChange, onReviewChange, onRatingChange, clear } = useForm(
+    { name: user?.userInfo?.name, ...review }
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { text, rating } = form;
+    const { userInfo } = user;
+    onSubmitForm({
+      userId: userInfo.id,
+      text,
+      rating,
+    });
   };
 
   return (
@@ -36,8 +42,8 @@ export const ReviewForm = () => {
         <FormItem label='Текст:'>
           <textarea
             type='text'
-            name='review'
-            value={form.review}
+            name='text'
+            value={form.text}
             onChange={onReviewChange}
             className={styles.formInput}
           />
@@ -55,7 +61,9 @@ export const ReviewForm = () => {
           <Button type='button' onClick={clear}>
             Очистить форму
           </Button>
-          <Button type='submit'>Отправить</Button>
+          <Button disabled={isSubmitDisabled} type='submit'>
+            Отправить
+          </Button>
         </div>
       </form>
     </div>

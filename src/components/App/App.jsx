@@ -16,7 +16,7 @@ import { HomePage } from 'src/pages/HomePage/HomePage';
 import { MenuPage } from 'src/pages/MenuPage/MenuPage';
 import { RestaurantDetailPage } from 'src/pages/RestaurantDetailPage/RestaurantDetailPage';
 import { RestaurantsPage } from 'src/pages/RestaurantsPage/RestaurantsPage';
-import { ReviewsPage } from 'src/pages/ReviewsPage/ReviewsPages';
+import { ReviewsPage } from 'src/pages/ReviewsPage/ReviewsPage';
 import { store } from 'src/store/store';
 
 export const App = () => (

@@ -3,8 +3,8 @@ import { RestaurantLink } from 'src/components/RestaurantLink/RestaurantLink';
 
 export const RestaurantsBar = ({ items }) => (
   <NavigationBar>
-    {items?.map((id) => (
-      <RestaurantLink key={id} id={id} />
+    {items?.map(({ name, id }) => (
+      <RestaurantLink key={id} name={name} id={id} />
     ))}
   </NavigationBar>
 );

@@ -3,7 +3,7 @@ import { RATING_COUNTER } from 'src/constants';
 
 const initialState = {
   name: '',
-  review: '',
+  text: '',
   rating: RATING_COUNTER.initialValue,
 };
 
@@ -22,7 +22,7 @@ const reducer = (state, { type, payload }) => {
     case SET_REVIEW_ACTION:
       return {
         ...state,
-        review: payload,
+        text: payload,
       };
     case SET_RATING_ACTION:
       return {
@@ -36,8 +36,11 @@ const reducer = (state, { type, payload }) => {
   }
 };
 
-export const useForm = () => {
-  const [form, dispatch] = useReducer(reducer, initialState);
+export const useForm = (initialValue) => {
+  const [form, dispatch] = useReducer(reducer, {
+    ...initialState,
+    ...initialValue,
+  });
 
   const onNameChange = (e) => {
     dispatch({ type: SET_NAME_ACTION, payload: e.target.value });

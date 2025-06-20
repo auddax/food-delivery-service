@@ -2,24 +2,24 @@ import { Outlet, useParams } from 'react-router';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { RestaurantDetail } from 'src/components/RestaurantDetail/RestaurantDetail';
-import { useRequest } from 'src/hooks/useRequest';
-import { loadRestaurantDetail } from 'src/store/slices/restaurant/restaurant.thunk';
+import { useGetRestaurantByIdQuery } from 'src/store/api';
 
 export const RestaurantDetailPage = () => {
   const { restaurantId } = useParams();
-  const { isLoading, error } = useRequest(loadRestaurantDetail, restaurantId);
+  const { data, isLoading, isError, error } =
+    useGetRestaurantByIdQuery(restaurantId);
 
   if (isLoading) {
     return <Loader />;
   }
 
-  if (error) {
-    return <ErrorMessage message={error.message} />;
+  if (isError) {
+    return <ErrorMessage message={error.data} />;
   }
 
   return (
     <>
-      <RestaurantDetail restaurantId={restaurantId} />
+      <RestaurantDetail restaurant={data} />
       <Outlet />
     </>
   );

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { BASE_URL } from 'src/constants';
 
-export const getReveiwsByRestaurantId = (restaurantId) => {
+export const getReviewsByRestaurantId = (restaurantId) => {
   return axios
-    .get(`${BASE_URL}/api/reviews`, { params: { restaurantId } })
+    .get(`${BASE_URL}/reviews`, { params: { restaurantId } })
     .then((result) => result.data)
     .catch((error) => {
       return Promise.reject(error);

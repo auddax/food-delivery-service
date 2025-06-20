@@ -3,9 +3,8 @@ import { INITIAL_USER_INFO } from 'src/constants';
 import { UserContext } from 'src/contexts/UserContext/UserContext';
 
 const mockUserInfo = {
+  id: 'a304959a-76c0-4b34-954a-b38dbf310360',
   name: 'Antony',
-  review: 'Not bad',
-  rating: 5,
 };
 
 export const UserContextProvider = ({ children }) => {
