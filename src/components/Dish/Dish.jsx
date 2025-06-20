@@ -7,8 +7,6 @@ import styles from './Dish.module.scss';
 export const Dish = ({ dish }) => {
   if (!dish) return null;
 
-  console.log(dish);
-
   const { id, name, price, ingredients } = dish;
 
   return (

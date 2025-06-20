@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { useParams } from 'react-router';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
@@ -35,7 +35,7 @@ export const ReviewsPage = () => {
   const [editReviewMutation, { isLoading: isEditReviewLoading }] =
     useEditReviewMutation();
 
-  const reviewsByUserId = keyBy(reviews, 'userId');
+  const reviewsByUserId = useMemo(() => keyBy(reviews, 'userId'), [reviews]);
 
   const handleSubmitReview = (review) => {
     const { userInfo } = user || {};
@@ -70,11 +70,13 @@ export const ReviewsPage = () => {
         users={users}
         isLoading={isAddReviewLoading || isEditReviewLoading}
       />
-      <ReviewForm
-        review={reviewsByUserId[user?.userInfo?.id]}
-        onSubmitForm={handleSubmitReview}
-        isSubmitDisabled={isAddReviewLoading || isEditReviewLoading}
-      />
+      {user?.isAuthorized && (
+        <ReviewForm
+          review={reviewsByUserId[user?.userInfo?.id] || {}}
+          onSubmitForm={handleSubmitReview}
+          isSubmitDisabled={isAddReviewLoading || isEditReviewLoading}
+        />
+      )}
     </>
   );
 };
