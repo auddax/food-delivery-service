@@ -19,7 +19,7 @@ import { RestaurantsPage } from 'src/pages/RestaurantsPage/RestaurantsPage';
 import { ReviewsPage } from 'src/pages/ReviewsPage/ReviewsPage';
 import { store } from 'src/store/store';
 
-export const App = () => (
+const App = () => (
   <Provider store={store}>
     <UserContextProvider>
       <ButtonThemeContextProvider>
@@ -51,3 +51,5 @@ export const App = () => (
     </UserContextProvider>
   </Provider>
 );
+
+export default App;
