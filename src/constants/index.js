@@ -12,7 +12,7 @@ export const INITIAL_USER_INFO = {
 
 export const APP_PATHS = {
   HOME: '/',
-  RESTAURANTS: 'restaurants',
+  RESTAURANTS: '/restaurants',
 };
 
 export const RESTAURANT_PATHS = {
@@ -25,7 +25,7 @@ export const RESTAURANT_DETAIL_PATHS = {
 };
 
 export const DISH_PATHS = {
-  DISH: 'dish/:dishId',
+  DISH: '/dish/:dishId',
 };
 
 export const BASE_URL = 'http://localhost:3001/api';

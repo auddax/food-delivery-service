@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams } from 'next/navigation';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { Menu } from 'src/components/Menu/Menu';

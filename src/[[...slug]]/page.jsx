@@ -1,6 +1,6 @@
 import 'src/components/App/App.scss';
 
-import ClientOnlyApp from './client-only-app';
+import ClientOnlyApp from 'src/[[...slug]]/client-only-app';
 
 const Page = () => <ClientOnlyApp />;
 

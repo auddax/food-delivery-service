@@ -13,6 +13,15 @@ const nextConfig = {
 			});
 		return config;
 	},
+	async redirects() {
+    return [
+      {
+        source: "/restaurants/:restaurantId",
+        destination: "/restaurants/:restaurantId/menu",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
