@@ -1,5 +1,3 @@
-'use client';
-
 import { RestaurantDetailPage } from 'src/pages/RestaurantDetailPage/RestaurantDetailPage';
 
 const Layout = ({ children }) => (

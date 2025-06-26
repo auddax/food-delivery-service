@@ -1,3 +1,5 @@
+'use client';
+
 import { useParams } from 'next/navigation';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';

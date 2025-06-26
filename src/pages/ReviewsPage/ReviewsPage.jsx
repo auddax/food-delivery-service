@@ -1,3 +1,5 @@
+'use client';
+
 import { useParams } from 'next/navigation';
 import { useContext, useMemo } from 'react';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
