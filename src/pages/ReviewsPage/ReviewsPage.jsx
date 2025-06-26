@@ -1,5 +1,7 @@
+'use client';
+
+import { useParams } from 'next/navigation';
 import { useContext, useMemo } from 'react';
-import { useParams } from 'react-router';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { ReviewForm } from 'src/components/ReviewForm/ReviewForm';

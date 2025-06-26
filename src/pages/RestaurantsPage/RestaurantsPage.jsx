@@ -1,4 +1,5 @@
-import { Outlet } from 'react-router';
+'use client';
+
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { RestaurantsBar } from 'src/components/RestaurantsBar/RestaurantsBar';
@@ -15,10 +16,5 @@ export const RestaurantsPage = () => {
     return <ErrorMessage message={error.data} />;
   }
 
-  return (
-    <>
-      <RestaurantsBar items={data} />
-      <Outlet />
-    </>
-  );
+  return <RestaurantsBar items={data} />;
 };

@@ -1,6 +1,9 @@
 @import '../../styles/colors.scss';
 
-.nav-btn {
+// Add  specificity to handle changes in the order of css modules
+// https://github.com/vercel/next.js/issues/13092
+
+.nav-btn:not(#_) {
   padding: .5rem 2rem;
   cursor: pointer;
   border: none;

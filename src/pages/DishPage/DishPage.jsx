@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useParams } from 'next/navigation';
 import { Dish } from 'src/components/Dish/Dish';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
