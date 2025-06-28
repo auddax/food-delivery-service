@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext } from 'react';
 import { Counter } from 'src/components/Counter/Counter';
 import { UserContext } from 'src/contexts/UserContext/UserContext';

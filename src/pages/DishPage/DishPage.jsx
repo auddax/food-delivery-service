@@ -1,16 +1,10 @@
-import { useParams } from 'next/navigation';
 import { Dish } from 'src/components/Dish/Dish';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
-import { Loader } from 'src/components/Loader/Loader';
-import { useGetDishByIdQuery } from 'src/store/api';
+import { getDishById } from 'src/services';
 
-export const DishPage = () => {
-  const { dishId } = useParams();
-  const { data, isLoading, isError, error } = useGetDishByIdQuery(dishId);
-
-  if (isLoading) {
-    return <Loader />;
-  }
+export const DishPage = async ({ params }) => {
+  const { dishId } = await params;
+  const { data, isError, error } = await getDishById(dishId);
 
   if (isError) {
     return <ErrorMessage message={error.data} />;
