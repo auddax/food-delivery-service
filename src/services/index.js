@@ -1,6 +1,6 @@
 import { BASE_URL } from 'src/constants';
 
-const makeRequest = async (path, params) => {
+export const makeRequest = async (path, params) => {
   const response = await fetch(`${BASE_URL}/${path}`, { ...params });
 
   if (!response.ok) {
@@ -34,18 +34,4 @@ export const getReviewsByRestaurantId = async (restaurantId) => {
 
 export const getAllUsers = async () => {
   return await makeRequest('users');
-};
-
-export const addReview = async ({ restaurantId, review }) => {
-  return await makeRequest(`review/${restaurantId}`, {
-    method: 'POST',
-    body: review,
-  });
-};
-
-export const editReview = async ({ reviewId, review }) => {
-  return await makeRequest(`review/${reviewId}`, {
-    method: 'PATCH',
-    body: review,
-  });
 };

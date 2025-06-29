@@ -1,3 +1,5 @@
+'use client';
+
 import { ShoppingCartOutlined } from '@ant-design/icons';
 import { useContext } from 'react';
 import { Button } from 'src/components/Button/Button';

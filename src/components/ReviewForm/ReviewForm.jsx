@@ -1,41 +1,40 @@
-import { useContext } from 'react';
+'use client';
+
+import { usePathname } from 'next/navigation';
+import { useActionState, useContext, useRef } from 'react';
+import { submitFormAction } from 'src/actions';
 import { Button } from 'src/components/Button/Button';
 import { FormItem } from 'src/components/FormItem/FormItem';
 import { RatingCounter } from 'src/components/ReviewForm/RatingCounter';
 import { Title } from 'src/components/Title/Title';
 import { RATING_COUNTER } from 'src/constants';
 import { UserContext } from 'src/contexts/UserContext/UserContext';
-import { useForm } from 'src/hooks/useForm';
 
 import styles from './ReviewForm.module.scss';
 
-export const ReviewForm = ({ review, onSubmitForm, isSubmitDisabled }) => {
+export const ReviewForm = ({ reviewsByUserId, restaurantId }) => {
   const { user } = useContext(UserContext);
-  const { form, onNameChange, onReviewChange, onRatingChange, clear } = useForm(
-    { name: user?.userInfo?.name, ...review }
-  );
+  const pathname = usePathname();
+  const counterRef = useRef();
+  const [state, submitAction, isPending] = useActionState(submitFormAction, {
+    restaurantId,
+    pathname,
+    userId: user?.userInfo?.id,
+    name: user?.userInfo?.name,
+    review: reviewsByUserId[user?.userInfo?.id],
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { text, rating } = form;
-    const { userInfo } = user;
-    onSubmitForm({
-      userId: userInfo.id,
-      text,
-      rating,
-    });
-  };
+  if (!user?.isAuthorized) return null;
 
   return (
     <div className={styles.reviewForm}>
       <Title level={3} value='Оставить отзыв' className={styles.formTitle} />
-      <form onSubmit={handleSubmit}>
+      <form action={submitAction}>
         <FormItem label='Имя:'>
           <input
             type='text'
             name='name'
-            value={form.name}
-            onChange={onNameChange}
+            defaultValue={state.name}
             className={styles.formInput}
           />
         </FormItem>
@@ -43,25 +42,24 @@ export const ReviewForm = ({ review, onSubmitForm, isSubmitDisabled }) => {
           <textarea
             type='text'
             name='text'
-            value={form.text}
-            onChange={onReviewChange}
+            defaultValue={state.review?.text}
             className={styles.formInput}
           />
         </FormItem>
         <FormItem label='Рейтинг:'>
           <RatingCounter
             name='rating'
-            value={form.rating}
-            onChange={onRatingChange}
+            ref={counterRef}
+            defaultValue={state.review?.rating}
             minValue={RATING_COUNTER.minValue}
             maxValue={RATING_COUNTER.maxValue}
           />
         </FormItem>
         <div className={styles.formActions}>
-          <Button type='button' onClick={clear}>
+          <Button type='submit' formAction={() => submitAction(null)}>
             Очистить форму
           </Button>
-          <Button disabled={isSubmitDisabled} type='submit'>
+          <Button type='submit' disabled={isPending}>
             Отправить
           </Button>
         </div>
