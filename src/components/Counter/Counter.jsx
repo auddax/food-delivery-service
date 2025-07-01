@@ -4,7 +4,7 @@ import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeC
 
 import styles from './Counter.module.scss';
 
-export const Counter = ({ count, increment, decrement }) => {
+export const Counter = ({ count, increment, decrement, ...props }) => {
   const { theme } = useContext(ButtonThemeContext);
 
   return (
@@ -16,7 +16,12 @@ export const Counter = ({ count, increment, decrement }) => {
       >
         -
       </button>
-      <span className={classnames(styles.count, styles[theme])}>{count}</span>
+      <input
+        value={count}
+        className={classnames(styles.count, styles[theme])}
+        readOnly
+        {...props}
+      />
       <button
         type='button'
         className={classnames(styles.counterBtn, styles[theme])}

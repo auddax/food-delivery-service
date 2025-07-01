@@ -33,6 +33,10 @@
 
   .count {
     margin: 0 .5rem;
+    text-align: center;
+    border: none;
+    background: transparent;
+    width: 1rem;
 
     &.alt {
       color: $color-text-secondary;

@@ -1,19 +1,11 @@
-'use client';
-
-import { useParams } from 'next/navigation';
 import { ErrorMessage } from 'src/components/ErrorMessage/ErrorMessage';
 import { Loader } from 'src/components/Loader/Loader';
 import { RestaurantDetail } from 'src/components/RestaurantDetail/RestaurantDetail';
-import { useGetRestaurantByIdQuery } from 'src/store/api';
+import { getRestaurantById } from 'src/services';
 
-export const RestaurantDetailPage = ({ children }) => {
-  const { restaurantId } = useParams();
-  const { data, isLoading, isError, error } =
-    useGetRestaurantByIdQuery(restaurantId);
-
-  if (isLoading) {
-    return <Loader />;
-  }
+export const RestaurantDetailPage = async ({ params, children }) => {
+  const { restaurantId } = await params;
+  const { data, isError, error } = await getRestaurantById(restaurantId);
 
   if (isError) {
     return <ErrorMessage message={error.data} />;

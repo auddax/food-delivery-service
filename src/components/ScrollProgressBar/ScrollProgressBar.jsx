@@ -1,3 +1,5 @@
+'use client';
+
 import { useScroll } from 'src/hooks/useScroll';
 
 import styles from './ScrollProgressBar.module.scss';

@@ -1,21 +1,18 @@
-'use client';
-
 import 'src/components/App/App.scss';
 
-import { Provider } from 'react-redux';
 import { Layout } from 'src/components/Layout/Layout';
 import { ButtonThemeContextProvider } from 'src/contexts/ButtonThemeContext/ButtonThemeContextProvider';
 import { UserContextProvider } from 'src/contexts/UserContext/UserContexProvider';
-import { store } from 'src/store/store';
+import { StoreProvider } from 'src/store/provider';
 
 const AppLayout = ({ children }) => (
-  <Provider store={store}>
+  <StoreProvider>
     <UserContextProvider>
       <ButtonThemeContextProvider>
         <Layout>{children}</Layout>
       </ButtonThemeContextProvider>
     </UserContextProvider>
-  </Provider>
+  </StoreProvider>
 );
 
 export default AppLayout;

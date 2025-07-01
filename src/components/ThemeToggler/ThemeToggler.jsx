@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext } from 'react';
 import { Toggler } from 'src/components/Toggler/Toggler';
 import { ButtonThemeContext } from 'src/contexts/ButtonThemeContext/ButtonThemeContext';
